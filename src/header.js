@@ -58,7 +58,6 @@ function BasicExample() {
 
   let RemoveItem = (item) => {
     let index = cartList.findIndex((e) => e.id == item.id)
-    console.log(cartList)
     cartList.splice(index, 1)
     setCart([...cartList])
     setTotal(total - item.price)
@@ -84,7 +83,11 @@ function BasicExample() {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <button class="btn btn-primary" onClick={() => addToCard(item)}>
+                <button
+                  class="btn btn-primary"
+                  disabled={cartList.some((array) => array.id == item.id)}
+                  onClick={() => addToCard(item)}
+                >
                   Add to card
                 </button>
               </div>
